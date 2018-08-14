@@ -6653,32 +6653,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 Operational amplifiers,  comparators, voltage regulators, ADCs, DACs, etc.&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="SOT223">
-<description>&lt;b&gt;Small Outline Transistor&lt;/b&gt;</description>
-<wire x1="3.2766" y1="1.778" x2="3.2766" y2="-1.778" width="0.2032" layer="21"/>
-<wire x1="3.2766" y1="-1.778" x2="-3.2766" y2="-1.778" width="0.2032" layer="21"/>
-<wire x1="-3.2766" y1="-1.778" x2="-3.2766" y2="1.778" width="0.2032" layer="21"/>
-<wire x1="-3.2766" y1="1.778" x2="3.2766" y2="1.778" width="0.2032" layer="21"/>
-<smd name="1" x="-2.3114" y="-3.0988" dx="1.2192" dy="2.2352" layer="1"/>
-<smd name="2" x="0" y="-3.0988" dx="1.2192" dy="2.2352" layer="1"/>
-<smd name="3" x="2.3114" y="-3.0988" dx="1.2192" dy="2.2352" layer="1"/>
-<smd name="4" x="0" y="3.099" dx="3.6" dy="2.2" layer="1"/>
-<text x="1.0208" y="-4.318" size="0.8128" layer="21" ratio="12">3</text>
-<text x="1.905" y="2.54" size="0.8128" layer="21" ratio="12">4</text>
-<text x="-3.4526" y="-4.318" size="0.8128" layer="21" ratio="12">1</text>
-<text x="-1.2906" y="-4.3274" size="0.8128" layer="21" ratio="12">2</text>
-<text x="-2.54" y="0.0508" size="1.27" layer="25">&gt;NAME</text>
-<text x="-2.54" y="-1.3208" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-1.6002" y1="1.8034" x2="1.6002" y2="3.6576" layer="51"/>
-<rectangle x1="-0.4318" y1="-3.6576" x2="0.4318" y2="-1.8034" layer="51"/>
-<rectangle x1="-2.7432" y1="-3.6576" x2="-1.8796" y2="-1.8034" layer="51"/>
-<rectangle x1="1.8796" y1="-3.6576" x2="2.7432" y2="-1.8034" layer="51"/>
-<rectangle x1="-1.6002" y1="1.8034" x2="1.6002" y2="3.6576" layer="51"/>
-<rectangle x1="-0.4318" y1="-3.6576" x2="0.4318" y2="-1.8034" layer="51"/>
-<rectangle x1="-2.7432" y1="-3.6576" x2="-1.8796" y2="-1.8034" layer="51"/>
-<rectangle x1="1.8796" y1="-3.6576" x2="2.7432" y2="-1.8034" layer="51"/>
-</package>
-<package name="SOT23">
+<package name="SOT23" urn="urn:adsk.eagle:footprint:16354/1" library_version="2">
 <description>&lt;b&gt;SMALL OUTLINE TRANSISTOR&lt;/b&gt;&lt;p&gt;
 reflow soldering</description>
 <wire x1="-1.973" y1="1.983" x2="1.973" y2="1.983" width="0.0508" layer="39"/>
@@ -6703,9 +6678,49 @@ reflow soldering</description>
 <rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
 <rectangle x1="-0.5001" y1="-0.3" x2="0.5001" y2="0.3" layer="35"/>
 </package>
+<package name="SOT223" urn="urn:adsk.eagle:footprint:16157/1" library_version="2">
+<description>&lt;b&gt;Small Outline Transistor&lt;/b&gt;</description>
+<wire x1="3.2766" y1="1.778" x2="3.2766" y2="-1.778" width="0.2032" layer="21"/>
+<wire x1="3.2766" y1="-1.778" x2="-3.2766" y2="-1.778" width="0.2032" layer="21"/>
+<wire x1="-3.2766" y1="-1.778" x2="-3.2766" y2="1.778" width="0.2032" layer="21"/>
+<wire x1="-3.2766" y1="1.778" x2="3.2766" y2="1.778" width="0.2032" layer="21"/>
+<smd name="1" x="-2.3114" y="-3.0988" dx="1.2192" dy="2.2352" layer="1"/>
+<smd name="2" x="0" y="-3.0988" dx="1.2192" dy="2.2352" layer="1"/>
+<smd name="3" x="2.3114" y="-3.0988" dx="1.2192" dy="2.2352" layer="1"/>
+<smd name="4" x="0" y="3.099" dx="3.6" dy="2.2" layer="1"/>
+<text x="1.0208" y="-4.318" size="0.8128" layer="21" ratio="12">3</text>
+<text x="1.905" y="2.54" size="0.8128" layer="21" ratio="12">4</text>
+<text x="-3.4526" y="-4.318" size="0.8128" layer="21" ratio="12">1</text>
+<text x="-1.2906" y="-4.3274" size="0.8128" layer="21" ratio="12">2</text>
+<text x="-2.54" y="0.0508" size="1.27" layer="25">&gt;NAME</text>
+<text x="-2.54" y="-1.3208" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-1.6002" y1="1.8034" x2="1.6002" y2="3.6576" layer="51"/>
+<rectangle x1="-0.4318" y1="-3.6576" x2="0.4318" y2="-1.8034" layer="51"/>
+<rectangle x1="-2.7432" y1="-3.6576" x2="-1.8796" y2="-1.8034" layer="51"/>
+<rectangle x1="1.8796" y1="-3.6576" x2="2.7432" y2="-1.8034" layer="51"/>
+<rectangle x1="-1.6002" y1="1.8034" x2="1.6002" y2="3.6576" layer="51"/>
+<rectangle x1="-0.4318" y1="-3.6576" x2="0.4318" y2="-1.8034" layer="51"/>
+<rectangle x1="-2.7432" y1="-3.6576" x2="-1.8796" y2="-1.8034" layer="51"/>
+<rectangle x1="1.8796" y1="-3.6576" x2="2.7432" y2="-1.8034" layer="51"/>
+</package>
 </packages>
+<packages3d>
+<package3d name="SOT23" urn="urn:adsk.eagle:package:16489/2" type="model" library_version="2">
+<description>SMALL OUTLINE TRANSISTOR
+reflow soldering</description>
+<packageinstances>
+<packageinstance name="SOT23"/>
+</packageinstances>
+</package3d>
+<package3d name="SOT223" urn="urn:adsk.eagle:package:16418/2" type="model" library_version="2">
+<description>Small Outline Transistor</description>
+<packageinstances>
+<packageinstance name="SOT223"/>
+</packageinstances>
+</package3d>
+</packages3d>
 <symbols>
-<symbol name="78XX">
+<symbol name="78XX" urn="urn:adsk.eagle:symbol:16149/1" library_version="2">
 <wire x1="-7.62" y1="-5.08" x2="7.62" y2="-5.08" width="0.4064" layer="94"/>
 <wire x1="7.62" y1="-5.08" x2="7.62" y2="2.54" width="0.4064" layer="94"/>
 <wire x1="7.62" y1="2.54" x2="-7.62" y2="2.54" width="0.4064" layer="94"/>
@@ -6719,7 +6734,7 @@ reflow soldering</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="MCP1703" prefix="IC">
+<deviceset name="MCP1703" urn="urn:adsk.eagle:component:16824/3" prefix="IC" library_version="2">
 <description>&lt;b&gt;250 mA, 16V, Low Quiescent Current LDO Regulator&lt;/b&gt;&lt;p&gt;
 Source: http://ww1.microchip.com/downloads/en/DeviceDoc/22049b.pdf</description>
 <gates>
@@ -6732,6 +6747,9 @@ Source: http://ww1.microchip.com/downloads/en/DeviceDoc/22049b.pdf</description>
 <connect gate="G$1" pin="VI" pad="1"/>
 <connect gate="G$1" pin="VO" pad="3"/>
 </connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:16418/2"/>
+</package3dinstances>
 <technologies>
 <technology name=""/>
 </technologies>
@@ -6742,6 +6760,9 @@ Source: http://ww1.microchip.com/downloads/en/DeviceDoc/22049b.pdf</description>
 <connect gate="G$1" pin="VI" pad="3"/>
 <connect gate="G$1" pin="VO" pad="2"/>
 </connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:16489/2"/>
+</package3dinstances>
 <technologies>
 <technology name=""/>
 </technologies>
@@ -9144,87 +9165,6 @@ http://www.tag-connect.com</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="headers(2mm)">
-<packages>
-<package name="1X7">
-<rectangle x1="-6.254" y1="-0.254" x2="-5.746" y2="0.254" layer="21"/>
-<rectangle x1="-4.254" y1="-0.254" x2="-3.746" y2="0.254" layer="21"/>
-<rectangle x1="-2.254" y1="-0.254" x2="-1.746" y2="0.254" layer="21"/>
-<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="21"/>
-<rectangle x1="1.746" y1="-0.254" x2="2.254" y2="0.254" layer="21"/>
-<rectangle x1="3.746" y1="-0.254" x2="4.254" y2="0.254" layer="21"/>
-<rectangle x1="5.746" y1="-0.254" x2="6.254" y2="0.254" layer="21"/>
-<pad name="1" x="-6" y="0" drill="0.8" diameter="1.4224"/>
-<pad name="2" x="-4" y="0" drill="0.8" diameter="1.4224"/>
-<pad name="3" x="-2" y="0" drill="0.8" diameter="1.4224"/>
-<pad name="4" x="0" y="0" drill="0.8" diameter="1.4224"/>
-<pad name="5" x="2" y="0" drill="0.8" diameter="1.4224"/>
-<pad name="6" x="4" y="0" drill="0.8" diameter="1.4224"/>
-<pad name="7" x="6" y="0" drill="0.8" diameter="1.4224"/>
-</package>
-</packages>
-<symbols>
-<symbol name="1X7_HEADER">
-<wire x1="-2.54" y1="10.16" x2="2.54" y2="10.16" width="0.254" layer="94"/>
-<wire x1="1.27" y1="7.62" x2="2.54" y2="7.62" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="10.16" x2="-2.54" y2="-10.16" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="-10.16" x2="2.54" y2="-10.16" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-10.16" x2="2.54" y2="-7.62" width="0.254" layer="94"/>
-<text x="0" y="7.62" size="1.016" layer="94" font="vector" rot="MR0" align="center">01</text>
-<text x="-2.54" y="10.795" size="1.27" layer="95" font="vector">&gt;NAME</text>
-<text x="-2.54" y="-12.065" size="1.27" layer="96" font="vector">&gt;VALUE</text>
-<pin name="1" x="2.54" y="7.62" visible="off" length="point" rot="R180"/>
-<wire x1="2.54" y1="-7.62" x2="2.54" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-5.08" x2="2.54" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-2.54" x2="2.54" y2="0" width="0.254" layer="94"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="2.54" width="0.254" layer="94"/>
-<wire x1="2.54" y1="2.54" x2="2.54" y2="5.08" width="0.254" layer="94"/>
-<wire x1="2.54" y1="5.08" x2="2.54" y2="7.62" width="0.254" layer="94"/>
-<wire x1="2.54" y1="7.62" x2="2.54" y2="10.16" width="0.254" layer="94"/>
-<text x="0" y="5.08" size="1.016" layer="94" font="vector" rot="MR0" align="center">02</text>
-<pin name="2" x="2.54" y="5.08" visible="off" length="point" rot="R180"/>
-<text x="0" y="2.54" size="1.016" layer="94" font="vector" rot="MR0" align="center">03</text>
-<text x="0" y="0" size="1.016" layer="94" font="vector" rot="MR0" align="center">04</text>
-<pin name="3" x="2.54" y="2.54" visible="off" length="point" rot="R180"/>
-<pin name="4" x="2.54" y="0" visible="off" length="point" rot="R180"/>
-<wire x1="1.27" y1="5.08" x2="2.54" y2="5.08" width="0.254" layer="94"/>
-<wire x1="1.27" y1="2.54" x2="2.54" y2="2.54" width="0.254" layer="94"/>
-<wire x1="1.27" y1="0" x2="2.54" y2="0" width="0.254" layer="94"/>
-<text x="0" y="-2.54" size="1.016" layer="94" font="vector" rot="MR0" align="center">05</text>
-<text x="0" y="-5.08" size="1.016" layer="94" font="vector" rot="MR0" align="center">06</text>
-<wire x1="1.27" y1="-2.54" x2="2.54" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="1.27" y1="-5.08" x2="2.54" y2="-5.08" width="0.254" layer="94"/>
-<pin name="5" x="2.54" y="-2.54" visible="off" length="point" rot="R180"/>
-<pin name="6" x="2.54" y="-5.08" visible="off" length="point" rot="R180"/>
-<text x="0" y="-7.62" size="1.016" layer="94" font="vector" rot="MR0" align="center">07</text>
-<wire x1="1.27" y1="-7.62" x2="2.54" y2="-7.62" width="0.254" layer="94"/>
-<pin name="7" x="2.54" y="-7.62" visible="off" length="point" rot="R180"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="1X7">
-<gates>
-<gate name="G$1" symbol="1X7_HEADER" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="1X7">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-<connect gate="G$1" pin="3" pad="3"/>
-<connect gate="G$1" pin="4" pad="4"/>
-<connect gate="G$1" pin="5" pad="5"/>
-<connect gate="G$1" pin="6" pad="6"/>
-<connect gate="G$1" pin="7" pad="7"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="TSL2591">
 <packages>
 <package name="DFN6_TAOS">
@@ -9283,6 +9223,76 @@ http://www.tag-connect.com</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="Plantower-DS-HCHO">
+<packages>
+<package name="DS_HCHO">
+<pad name="P$1" x="23.7" y="17" drill="0.85" diameter="1.45"/>
+<pad name="P$2" x="23.7" y="15" drill="0.85" diameter="1.45"/>
+<pad name="P$3" x="23.7" y="13" drill="0.85" diameter="1.45"/>
+<pad name="P$4" x="23.7" y="11" drill="0.85" diameter="1.45"/>
+<pad name="P$5" x="23.7" y="9" drill="0.85" diameter="1.45"/>
+<pad name="P$6" x="23.7" y="7" drill="0.85" diameter="1.45"/>
+<pad name="P$7" x="23.7" y="5" drill="0.85" diameter="1.45"/>
+<pad name="P$8" x="1.3" y="15" drill="0.85" diameter="1.45"/>
+<pad name="P$9" x="1.3" y="13" drill="0.85" diameter="1.45"/>
+<pad name="P$10" x="1.3" y="11" drill="0.85" diameter="1.45"/>
+<pad name="P$11" x="1.3" y="9" drill="0.85" diameter="1.45"/>
+<pad name="P$12" x="1.3" y="7" drill="0.85" diameter="1.45"/>
+<wire x1="0" y1="0" x2="25" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="0" y2="22" width="0.1524" layer="21"/>
+<wire x1="0" y1="22" x2="25" y2="22" width="0.1524" layer="21"/>
+<wire x1="25" y1="0" x2="25" y2="22" width="0.1524" layer="21"/>
+<circle x="12.25" y="11" radius="8.876934375" width="0.1524" layer="21"/>
+<text x="-0.1" y="22.8" size="1.016" layer="21" font="vector">&gt;NAME</text>
+<text x="0" y="-1.6" size="1.016" layer="21" font="vector">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="DS_HCHO">
+<pin name="VCC" x="10.16" y="17.78" length="middle" rot="R180"/>
+<pin name="GND" x="10.16" y="15.24" length="middle" rot="R180"/>
+<pin name="RST" x="10.16" y="12.7" length="middle" rot="R180"/>
+<pin name="NC@1" x="10.16" y="10.16" length="middle" rot="R180"/>
+<pin name="NC@2" x="10.16" y="7.62" length="middle" rot="R180"/>
+<pin name="TX" x="10.16" y="5.08" length="middle" rot="R180"/>
+<pin name="RX" x="10.16" y="2.54" length="middle" rot="R180"/>
+<wire x1="5.08" y1="0" x2="5.08" y2="20.32" width="0.1524" layer="94"/>
+<wire x1="5.08" y1="20.32" x2="-5.08" y2="20.32" width="0.1524" layer="94"/>
+<wire x1="-5.08" y1="20.32" x2="-5.08" y2="0" width="0.1524" layer="94"/>
+<wire x1="-5.08" y1="0" x2="5.08" y2="0" width="0.1524" layer="94"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="DS_HCHO">
+<description>Plantower DS-HCHO formaldehyde sensor (2mm pitch pins)
+&lt;br&gt;http://www.plantower.com/en/content/?105.html
+&lt;p&gt;
+Designed by Akram Ali&lt;br&gt;
+https://github.com/AKstudios
+&lt;p&gt;
+August 2018</description>
+<gates>
+<gate name="G$1" symbol="DS_HCHO" x="0" y="-10.16"/>
+</gates>
+<devices>
+<device name="" package="DS_HCHO">
+<connects>
+<connect gate="G$1" pin="GND" pad="P$2"/>
+<connect gate="G$1" pin="NC@1" pad="P$4"/>
+<connect gate="G$1" pin="NC@2" pad="P$5"/>
+<connect gate="G$1" pin="RST" pad="P$3"/>
+<connect gate="G$1" pin="RX" pad="P$7"/>
+<connect gate="G$1" pin="TX" pad="P$6"/>
+<connect gate="G$1" pin="VCC" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -9304,7 +9314,7 @@ http://www.tag-connect.com</description>
 <attribute name="MPN" value="150080BS75000"/>
 </part>
 <part name="GND8" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="U8" library="linear" library_urn="urn:adsk.eagle:library:262" deviceset="MCP1703" device="CB" value="MCP1703/3.3V">
+<part name="U8" library="linear" library_urn="urn:adsk.eagle:library:262" deviceset="MCP1703" device="CB" package3d_urn="urn:adsk.eagle:package:16489/2" value="MCP1703/3.3V">
 <attribute name="MPN" value="MCP1703T-2502E/CB"/>
 </part>
 <part name="C1" library="SparkFun-Capacitors" deviceset="CAP" device="0805" value="1uF">
@@ -9368,9 +9378,6 @@ http://www.tag-connect.com</description>
 <part name="U$3" library="adafruit" deviceset="FIDUCIAL" device=""/>
 <part name="J6" library="SparkFun-Connectors" deviceset="USB_MICRO-B" device="_HALF_PTH" value="AMP FCI 10103594-0001LF"/>
 <part name="GND11" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="U$4" library="headers(2mm)" deviceset="1X7" device=""/>
-<part name="SUPPLY6" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
-<part name="GND9" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="U10" library="TSL2591" deviceset="LIGHT_TSL2591" device="" value="TSL2591">
 <attribute name="MPN" value="TSL25911FN "/>
 </part>
@@ -9379,6 +9386,9 @@ http://www.tag-connect.com</description>
 <part name="C4" library="Adafruit Feather 32u4 Bluefruit LE" deviceset="MICROBUILDER_CAP_CERAMIC" device="_0402MP" value="0.1uF">
 <attribute name="MPN" value="GRM155R71C104KA88J"/>
 </part>
+<part name="U$5" library="Plantower-DS-HCHO" deviceset="DS_HCHO" device=""/>
+<part name="SUPPLY9" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
+<part name="GND13" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9394,7 +9404,7 @@ http://www.tag-connect.com</description>
 <text x="247.396" y="-104.648" size="2.54" layer="94" font="vector" ratio="10">v0.1</text>
 <text x="212.598" y="-109.728" size="2.1844" layer="94" font="vector" ratio="15">SENSORS</text>
 <text x="241.3" y="-60.96" size="3.81" layer="94">TagConnect ISP</text>
-<text x="104.14" y="22.86" size="3.81" layer="94">DS-HCHO</text>
+<text x="124.46" y="22.86" size="3.81" layer="94">DS-HCHO</text>
 <text x="71.12" y="-48.26" size="2.54" layer="94" font="vector">Light Intensity</text>
 <text x="93.98" y="-76.2" size="1.778" layer="97">0x29</text>
 </plain>
@@ -9477,9 +9487,6 @@ http://www.tag-connect.com</description>
 <attribute name="NAME" x="-50.8" y="109.22" size="1.778" layer="95" font="vector" rot="MR0"/>
 </instance>
 <instance part="GND11" gate="1" x="-48.26" y="78.74"/>
-<instance part="U$4" gate="G$1" x="111.76" y="5.08" rot="R180"/>
-<instance part="SUPPLY6" gate="G$1" x="104.14" y="12.7"/>
-<instance part="GND9" gate="1" x="104.14" y="7.62"/>
 <instance part="U10" gate="G$1" x="93.98" y="-63.5">
 <attribute name="MPN" x="93.98" y="-63.5" size="1.778" layer="96" display="off"/>
 </instance>
@@ -9488,6 +9495,9 @@ http://www.tag-connect.com</description>
 <instance part="C4" gate="G$1" x="71.12" y="-66.04" rot="R180">
 <attribute name="MPN" x="71.12" y="-66.04" size="1.778" layer="96" rot="R180" display="off"/>
 </instance>
+<instance part="U$5" gate="G$1" x="132.08" y="-5.08"/>
+<instance part="SUPPLY9" gate="G$1" x="147.32" y="12.7"/>
+<instance part="GND13" gate="1" x="147.32" y="7.62"/>
 </instances>
 <busses>
 </busses>
@@ -9640,11 +9650,6 @@ http://www.tag-connect.com</description>
 <pinref part="GND11" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="U$4" gate="G$1" pin="6"/>
-<wire x1="109.22" y1="10.16" x2="104.14" y2="10.16" width="0.1524" layer="91"/>
-<pinref part="GND9" gate="1" pin="GND"/>
-</segment>
-<segment>
 <pinref part="C4" gate="G$1" pin="1"/>
 <wire x1="71.12" y1="-71.12" x2="71.12" y2="-73.66" width="0.1524" layer="91"/>
 <pinref part="GND12" gate="1" pin="GND"/>
@@ -9653,6 +9658,11 @@ http://www.tag-connect.com</description>
 <label x="78.74" y="-73.66" size="1.778" layer="95"/>
 <wire x1="78.74" y1="-71.12" x2="71.12" y2="-71.12" width="0.1524" layer="91" style="longdash"/>
 <junction x="71.12" y="-71.12"/>
+</segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="GND"/>
+<wire x1="142.24" y1="10.16" x2="147.32" y2="10.16" width="0.1524" layer="91"/>
+<pinref part="GND13" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -9731,11 +9741,6 @@ http://www.tag-connect.com</description>
 <pinref part="SUPPLY5" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="U$4" gate="G$1" pin="7"/>
-<wire x1="109.22" y1="12.7" x2="104.14" y2="12.7" width="0.1524" layer="91"/>
-<pinref part="SUPPLY6" gate="G$1" pin="VCC"/>
-</segment>
-<segment>
 <label x="78.74" y="-68.58" size="1.778" layer="95"/>
 <wire x1="71.12" y1="-63.5" x2="71.12" y2="-60.96" width="0.1524" layer="91"/>
 <pinref part="SUPPLY14" gate="G$1" pin="VCC"/>
@@ -9745,6 +9750,11 @@ http://www.tag-connect.com</description>
 <wire x1="76.2" y1="-68.58" x2="76.2" y2="-63.5" width="0.1524" layer="91" style="longdash"/>
 <wire x1="76.2" y1="-63.5" x2="71.12" y2="-63.5" width="0.1524" layer="91" style="longdash"/>
 <junction x="71.12" y="-63.5"/>
+</segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="VCC"/>
+<wire x1="142.24" y1="12.7" x2="147.32" y2="12.7" width="0.1524" layer="91"/>
+<pinref part="SUPPLY9" gate="G$1" pin="VCC"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -10146,9 +10156,9 @@ http://www.tag-connect.com</description>
 <label x="264.16" y="78.74" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$4" gate="G$1" pin="1"/>
-<wire x1="109.22" y1="-2.54" x2="106.68" y2="-2.54" width="0.1524" layer="91"/>
-<label x="101.6" y="-2.54" size="1.778" layer="95"/>
+<pinref part="U$5" gate="G$1" pin="RX"/>
+<wire x1="142.24" y1="-2.54" x2="144.78" y2="-2.54" width="0.1524" layer="91"/>
+<label x="144.78" y="-2.54" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="D4" class="0">
@@ -10158,9 +10168,9 @@ http://www.tag-connect.com</description>
 <label x="264.16" y="76.2" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$4" gate="G$1" pin="2"/>
-<wire x1="109.22" y1="0" x2="106.68" y2="0" width="0.1524" layer="91"/>
-<label x="101.6" y="0" size="1.778" layer="95"/>
+<pinref part="U$5" gate="G$1" pin="TX"/>
+<wire x1="142.24" y1="0" x2="144.78" y2="0" width="0.1524" layer="91"/>
+<label x="144.78" y="0" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -10184,6 +10194,16 @@ http://www.tag-connect.com</description>
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)
 with this version.
+</note>
+<note version="8.3" severity="warning">
+Since Version 8.3, EAGLE supports URNs for individual library
+assets (packages, symbols, and devices). The URNs of those assets
+will not be understood (or retained) with this version.
+</note>
+<note version="8.3" severity="warning">
+Since Version 8.3, EAGLE supports the association of 3D packages
+with devices in libraries, schematics, and board files. Those 3D
+packages will not be understood (or retained) with this version.
 </note>
 </compatibility>
 </eagle>
