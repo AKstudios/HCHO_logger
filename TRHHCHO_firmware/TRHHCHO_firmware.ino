@@ -1,14 +1,18 @@
-// OSBSS T/RH/CO2 data logger based on SenseAir K-30 1% CO2 sensor and Sensirion SHT35 sensor
-// read interval stored in config.txt
-// Last edited on June 15, 2017 - Arduino IDE 1.8.2, Latest SdFat library
+// OSBSS T/RH/L/HCHO data logger based on Plantower DS-HCHO sensor, AMS TSL2591 and Sensirion SHT31/35 sensor
+// read interval stored in config.txt, data stored in data.csv
+// Last edited on September 6, 2018 - Arduino IDE 1.8.5, SdFat library (Aug 2018 commit)
+// Use NeoSWSerial library instead of SoftwareSerial - handles interrupts much faster and way better so clock doesn't error out after alarm is triggered.
 
 #include <EEPROM.h>
+#include <NeoSWSerial.h>
 #include <Wire.h>
 #include <SPI.h>
 #include <DS3234lib3.h>         // https://github.com/OSBSS/DS3234lib3
 #include <PowerSaver.h>         // https://github.com/OSBSS/PowerSaver
-#include "SdFat.h"              // https://github.com/greiman/SdFat
+#include "SdFat.h"              // http://www.osbss.com/wp-content/uploads/2015/03/SdFat.zip
 #include "Adafruit_SHT31.h"     // https://github.com/adafruit/Adafruit_SHT31
+#include <Adafruit_Sensor.h>  // https://github.com/adafruit/Adafruit_Sensor
+#include <Adafruit_TSL2591.h> // https://github.com/adafruit/Adafruit_TSL2591_Library
 
 // Launch Variables   ******************************
 long interval = 30;  // set logging interval in SECONDS, eg: set 300 seconds for an interval of 5 mins
@@ -18,33 +22,37 @@ int data; // read each byte of data from sd card and store here
 
 // Global objects and variables   ******************************
 Adafruit_SHT31 sht31 = Adafruit_SHT31();
+Adafruit_TSL2591 tsl = Adafruit_TSL2591(2591); // pass in a number for the sensor identifier (for your use later)
 PowerSaver chip;  	// declare object for PowerSaver class
 DS3234 RTC;    // declare object for DS3234 class
 SdFat sd;
 SdFile myFile;
+NeoSWSerial mySerial(4, 3); // RX, TX
+byte cmd[7] = {0x42,0x4d,0x01,0x00,0x00,0x00,0x90};
+unsigned char response[18]; // expect a 9 bytes response, give twice the size just in case things go crazy, it reduces likelyhood of crash/buffer overrun
+char buf[31];
 
 //#define POWER 3    // pin 3 supplies power to microSD card breakout
 #define LED 7  // pin 7 controls LED
 int chipSelect = 9; // pin 9 is CS pin for MicroSD breakout
 
-int CO2ppm = 0;
-int _CO2ppm;
-
+// IMP: DON'T DECLARE ISR HERE IF USING SOFTWARE SERIAL LIBRARIES THAT DEPEND ON PIN CHANGE INTERRUPTS!
 // ISR ****************************************************************
-ISR(PCINT0_vect)  // Interrupt Vector Routine to be executed when pin 8 receives an interrupt.
-{
-  //PORTB ^= (1<<PORTB1);
-  asm("nop");
-}
+//ISR(PCINT0_vect)  // Interrupt Vector Routine to be executed when pin 8 receives an interrupt.
+//{
+//  //PORTB ^= (1<<PORTB1);
+//  asm("nop");
+//}
+
 
 // setup ****************************************************************
 void setup()
 {
   Serial.begin(19200); // open serial at 19200 bps
+  mySerial.begin(9600);  // initialize HCHO sensor in UART mode
   Serial.flush(); // clear the buffer
-  delay(5);
-  
-  Serial.println("Setup");
+  delay(1);
+  Serial.println(RTC.timeStamp());    // get date and time from RTC
   delay(10);
   
   pinMode(LED, OUTPUT); // set output pins
@@ -57,8 +65,17 @@ void setup()
     delay(10);
   }
   
-  Serial.println(RTC.timeStamp());    // get date and time from RTC
-  delay(10);
+  if (! tsl.begin())
+  {
+    Serial.println("Couldn't find TSL2591");
+    delay(10);
+  }
+  else
+  {
+    tsl.setGain(TSL2591_GAIN_MED);      // 25x gain
+    tsl.setTiming(TSL2591_INTEGRATIONTIME_100MS);  // shortest integration time (bright light)
+  }
+
 
   if(!sd.begin(chipSelect, SPI_HALF_SPEED))  // initialize microSD card
   {
@@ -75,8 +92,8 @@ void setup()
     else
     {    
       myFile.println();
-      myFile.println("Date/Time,Temp(C),RH(%),CO2(ppm)");
-      myFile.println();
+      myFile.println("Date/Time,Temp(C),RH(%),Light(lux),HCHO(mg/m3)");
+      //myFile.println();
       myFile.close();
       
       digitalWrite(LED, HIGH);
@@ -122,7 +139,7 @@ void setup()
     
     if(_interval <= 0 || _interval > 86400 || error_flag == true)
     {
-      Serial.println("Incorrect format or out of bounds. Must be a number between 1 and 86,400 seconds. Setting default interval to 30 seconds.");
+      Serial.println("Incorrect interval format or out of bounds. Must be a number between 1 and 86,400 seconds. Setting default interval to 30 seconds.");
       delay(50);
     }
     else
@@ -133,6 +150,7 @@ void setup()
       delay(50);
     }
   }
+  Serial.println();
   RTC.setNewAlarm(interval);
   chip.sleepInterruptSetup();    // setup sleep function on the ATmega328p. Power-down mode is used here
   delay(10);
@@ -152,7 +170,7 @@ void loop()
                        // this function saves previous states of analog pins and sets them to LOW INPUTS
                        // average current draw on Mini Pro should now be around 0.195 mA (with both onboard LEDs taken out)
                        // Processor will only wake up with an interrupt generated from the RTC, which occurs every logging interval
-                       
+  
   chip.turnOnADC();    // enable ADC after processor wakes up
   chip.turnOnSPI();   // turn on SPI bus once the processor wakes up
   delay(1);    // important delay to ensure SPI bus is properly activated
@@ -162,34 +180,54 @@ void loop()
   RTC.checkDST();  // check and account for Daylight Saving Time in US
 
   String time = RTC.timeStamp();    // get date and time from RTC
+  
   Serial.println(time);
   delay(10);
   
   float t = sht31.readTemperature();
   float h = sht31.readHumidity();
+  float l = 0;
   
-  CO2ppm = GetCO2(0x68); // default address for K-30 CO2 sensor is 0x68
+  sensors_event_t event;
+  tsl.getEvent(&event);
+  if ((event.light == 0) | (event.light > 4294966000.0) | (event.light <-4294966000.0))
+  {
+    l = 0;  // invalid value; replace with 'NAN' if needed
+  }
+  else
+  {
+    l = event.light;
+  }
   
-  // account for dropped values
-  if(CO2ppm > 0)
-    _CO2ppm = CO2ppm;
-  if(CO2ppm <=0)
-    CO2ppm = _CO2ppm;
-
-  Serial.print("Temperature: ");
-  Serial.print(t);
-  Serial.println(" C");
+  mySerial.listen();
+  delay(1);
+  while(mySerial.available() > 0)  // clear out buffer
+    char x = mySerial.read();
+  mySerial.write(cmd,7);  // send command to HCHO sensor
+  delay(1);
+  mySerial.readBytes(buf, 10);
+  float hcho = ((buf[6] << 8) + buf[7])/100.0;
   
-  Serial.print("Humidity: ");
-  Serial.print(h); 
-  Serial.println(" %");
-  
-  Serial.print("CO2: ");
-  Serial.print(CO2ppm);
-  Serial.println(" ppm");
-  
-  Serial.println();
-  delay(50); // give some delay to ensure CO2 data is properly received from sensor
+//  For some weird reason, printing to serial here is causing the clock to .. clock out?
+//  Serial.print("Temperature: ");
+//  Serial.print(t);
+//  Serial.println(" C");
+//  
+//  Serial.print("Humidity: ");
+//  Serial.print(h); 
+//  Serial.println(" %");
+//  
+//  Serial.print("Light: ");
+//  Serial.print(l); 
+//  Serial.println(" lux");
+//  
+//  Serial.print("HCHO: ");
+//  Serial.print(hcho, 3);
+//  Serial.println(" mg/m3");
+//
+//  Serial.println();
+//  Serial.println("---------------------");
+//  delay(50); // give some delay to ensure data is properly sent over serial
   
 
   if(!sd.begin(chipSelect, SPI_HALF_SPEED))
@@ -207,11 +245,13 @@ void loop()
     {
       myFile.print(time);
       myFile.print(",");
-      myFile.print(t);
+      myFile.print(t, 3);
       myFile.print(",");
-      myFile.print(h);
+      myFile.print(h, 3);
       myFile.print(",");
-      myFile.println(CO2ppm);
+      myFile.print(l);
+      myFile.print(",");
+      myFile.println(hcho, 3);
       myFile.close();
       
       digitalWrite(LED, HIGH);
@@ -224,37 +264,6 @@ void loop()
   delay(1);
 }
 
-// Get CO2 concentration ****************************************************************
-int GetCO2(int address)
-{
-  byte recieved[4] = {0,0,0,0}; // create an array to store bytes received from sensor
-  
-  Wire.beginTransmission(address);
-  Wire.write(0x22);
-  Wire.write(0x00);
-  Wire.write(0x08);
-  Wire.write(0x2A);
-  Wire.endTransmission();
-  delay(20); // give delay to ensure transmission is complete
-  
-  Wire.requestFrom(address,4);
-  delay(10);
-  
-  byte i=0;
-  while(Wire.available())
-  {
-    recieved[i] = Wire.read();
-    i++;
-  }
-  
-  byte checkSum = recieved[0] + recieved[1] + recieved[2];
-  CO2ppm = (recieved[1] << 8) + recieved[2];
-  
-  if(checkSum == recieved[3])
-    return CO2ppm;
-  else
-    return -1;
-}
 
 // SD card Error response ****************************************************************
 void SDcardError(int n)
@@ -269,4 +278,5 @@ void SDcardError(int n)
 }
 
 //****************************************************************
+
 
